@@ -1,0 +1,16 @@
+version: '3'
+services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5001-5005:5000'  # Port binding replicas (Easy to spawn multiple instances of the application)
+      
+    volumes:
+      - todo_data:/app/todo_data
+    deploy:
+      replicas: 5
+
+volumes:
+  todo_data:
